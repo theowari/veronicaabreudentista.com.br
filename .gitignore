@@ -1,0 +1,13 @@
+# >>> prospectar (gerado pela skill; edite fora deste bloco)
+# Só a landing page vai para o git. Para liberar outro arquivo da raiz, adicione abaixo do bloco: !/nome-do-arquivo
+/*
+!/.gitignore
+!/index.html
+!/assets/
+!/leads/
+/leads/*/*
+!/leads/*/site/
+/leads/*/site/*
+!/leads/*/site/index.html
+!/leads/*/site/assets/
+# <<< prospectar

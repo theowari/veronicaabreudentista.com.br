@@ -1,0 +1,2378 @@
+<!doctype html>
+<!--
+  Gerado por render.py a partir de template.html.j2 + brand.json.
+  Não edite este arquivo à mão: edite o brand.json e rode o render de novo.
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Dra. Veronica Abreu | Dentista em São João da Boa Vista</title>
+  <meta name="description" content="Dra. Veronica Abreu, cirurgiã-dentista em São João da Boa Vista. Clínica geral, facetas em resina composta, clareamento e tratamento de canal. Agende sua avaliação pelo WhatsApp.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#85567e">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 32 32&#39; width=&#39;32&#39; height=&#39;32&#39;%3E%3Crect width=&#39;32&#39; height=&#39;32&#39; rx=&#39;8&#39; fill=&#39;%2385567e&#39;/%3E%3Cpath d=&#39;M16 8.6c-1.8-1.3-3.9-1.7-5.6-1.1-2.6 1-3.4 3.6-3 6 .4 2 1.2 3.5 1.5 5.6.4 2.6.7 5.9 2.3 7 1.5 1 2.2-2 2.5-3.9.4-1.7.8-2.7 2.3-2.7s1.9 1 2.3 2.7c.3 1.9 1 4.9 2.5 3.9 1.6-1.1 1.9-4.4 2.3-7 .3-2.1 1.1-3.6 1.5-5.6.4-2.4-.4-5-3-6-1.7-.6-3.8-.2-5.6 1.1z&#39; fill=&#39;%23ffffff&#39;/%3E%3C/svg%3E">
+
+  <script>
+    // Tema inicial: escolha salva no toggle > preferência do sistema.
+    // Roda antes do CSS para a página já abrir no tema certo, sem piscar.
+    (function () {
+      var root = document.documentElement, theme = null;
+      root.classList.add('js');
+      try { theme = localStorage.getItem('theme'); } catch (e) {}
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      root.dataset.theme = theme;
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap">
+
+  <!-- Phosphor Icons: peso light (linha fina) + regular para botões -->
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1777331903190-341a3dd0441b?auto=format&amp;fit=crop&amp;w=1100&amp;q=75">
+  <style>
+    /* ==========================================================================
+       Template de landing page para clínicas odontológicas
+       Paleta padrão: azul clínico + verde-água (acento) + branco.
+
+       COMO ADAPTAR À IDENTIDADE DE UMA CLÍNICA
+       Todas as cores da página derivam dos tokens em :root (tema claro) e do
+       bloco :root[data-theme="dark"] logo abaixo. Para casar com a marca de
+       um cliente, altere apenas esses valores e a fonte em --font (e o <link>
+       do Google Fonts no index.html). Não há cores da marca fixas no restante
+       do arquivo: transparências usam color-mix() sobre os próprios tokens.
+
+       Sistema de forma (regra única, aplicada em toda a página):
+       - Botões e controles interativos: pílula (999px)
+       - Superfícies, cards, imagens: 14px
+       - Campos de formulário: 10px
+       - Imagens de destaque (hero, tecnologia): arco decorativo
+       ========================================================================== */
+
+    :root {
+      /* Cores de marca (geradas pelo render.py a partir do brand.json) */
+      --primary: #85567e;       /* cor principal: botões, blocos de cor, header */
+      --primary-2: #94648d;     /* hover dos botões primários */
+      --primary-deep: #5a2e54;  /* versão escura: sombras e fundo do mapa */
+      --accent: #b181a7;        /* acento: ícones e detalhes em fundo claro */
+      --accent-ink: #8e6185;    /* acento para texto pequeno em fundo claro (AA) */
+      --accent-soft: #ffddf7;   /* acento sobre a cor principal (AA) */
+      --overlay: #290325;       /* degradê escuro sobre fotos */
+
+      /* Superfícies e texto: tema claro */
+      --bg: #fbf6fa;
+      --surface: #ffffff;
+      --surface-2: #f9f1f7;
+      --tint: #f4f0f3;          /* principal 50 */
+      --tint-accent: #fdf8fc;   /* acento 50 */
+      --ink: #3b2338;
+      --muted: #655562;
+      --line: color-mix(in srgb, var(--primary) 12%, transparent);
+      --block: var(--primary);  /* fundo das seções de cor (hero, tecnologia, contato) */
+      --block-ink: #fcf7fb;     /* texto sobre os blocos de cor */
+      --block-muted: color-mix(in srgb, var(--block-ink) 78%, transparent);
+      --shadow: 0 1px 2px color-mix(in srgb, var(--primary-deep) 6%, transparent), 0 24px 60px -24px color-mix(in srgb, var(--primary-deep) 28%, transparent);
+
+      --field-border: #9c8d99;  /* borda de campo com contraste 3:1 */
+      --error: #b42318;
+
+      --radius: 14px;
+      --radius-field: 10px;
+      --radius-pill: 999px;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);          /* ease-out forte: entradas */
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1); /* morph na tela (ícone do menu) */
+      --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);  /* painéis que abrem (menu mobile) */
+      --nav-h: 72px;
+
+      --font: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      --font-display: "Montserrat", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+      color-scheme: light;
+    }
+
+    /* Tema escuro. O atributo data-theme é definido no <head> (preferência do
+       sistema ou escolha salva) e alterado pelo toggle do header. */
+    :root[data-theme="dark"] {
+      --accent: #e8b6dd;
+      --accent-ink: #f1bfe6;
+      --bg: #170a15;
+      --surface: #22121f;
+      --surface-2: #2c1929;
+      --tint: #3c1f38;
+      --tint-accent: #2d1f2a;
+      --ink: #f8f1f6;
+      --muted: #c0aebd;
+      --line: rgb(255 255 255 / 0.1);
+      --block: #6f4269;
+      --field-border: #71606e;
+      --error: #f97066;
+      --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 24px 60px -24px rgb(0 0 0 / 0.6);
+      color-scheme: dark;
+    }
+
+    /* Troca de tema com a View Transition API: só um fade curto, a página nova
+       surge por cima da antiga. Sem transições de CSS durante a troca, para as
+       cores mudarem de uma vez e o fade ficar homogêneo. */
+    ::view-transition-old(root),
+    ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+    ::view-transition-new(root) { animation: theme-fade 0.3s ease; }
+    @keyframes theme-fade { from { opacity: 0; } }
+    .theme-switching *, .theme-switching *::before, .theme-switching *::after { transition: none !important; }
+
+    /* ---------- Base ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 16px); -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    figure { margin: 0; }
+    h1, h2, h3 { margin: 0; line-height: 1.12; letter-spacing: -0.02em; text-wrap: balance; }
+    p { margin: 0; text-wrap: pretty; }
+    a { color: inherit; }
+    ul, ol { margin: 0; padding: 0; }
+    [hidden] { display: none !important; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+    .skip-link {
+      position: absolute; left: 16px; top: -60px; z-index: 100;
+      background: var(--surface); color: var(--ink); padding: 10px 16px; border-radius: var(--radius-pill);
+    }
+    .skip-link:focus { top: 12px; }
+
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin-inline: auto;
+      padding-inline: max(20px, env(safe-area-inset-left, 0px), min(4vw, 40px));
+    }
+
+    .section { padding-block: clamp(80px, 10vw, 128px); }
+
+    /* ---------- Tipografia ---------- */
+    .eyebrow {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-ink);
+      margin-bottom: 18px;
+    }
+    .eyebrow--on-block { color: var(--accent-soft); }
+
+    .h2 {
+      font-size: clamp(1.875rem, 3.4vw, 2.75rem);
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .h2--on-block { color: var(--block-ink); }
+
+    .lead {
+      font-size: clamp(1.02rem, 1.3vw, 1.125rem);
+      color: var(--muted);
+      max-width: 58ch;
+      margin-top: 18px;
+    }
+    .lead--on-block { color: var(--block-muted); }
+
+    .section-head { margin-bottom: clamp(40px, 5vw, 64px); max-width: 720px; }
+    .section-head--center { margin-inline: auto; text-align: center; }
+    .section-head--center .lead { margin-inline: auto; }
+
+    /* ---------- Botões ---------- */
+    .btn {
+      --btn-bg: var(--primary);
+      --btn-fg: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 24px;
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      background: var(--btn-bg);
+      color: var(--btn-fg);
+      font: 700 0.875rem/1 var(--font);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: transform 0.2s var(--ease), background-color 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn i { font-size: 1.25em; }
+    .btn:active { transform: scale(0.97); }
+    .btn--sm { min-height: 42px; padding: 0 18px; font-size: 0.78rem; }
+    .btn--lg { min-height: 56px; padding: 0 30px; font-size: 0.9rem; }
+    .btn--block { width: 100%; }
+
+    .btn--primary { --btn-bg: var(--primary); --btn-fg: #fff; box-shadow: 0 10px 24px -12px color-mix(in srgb, var(--primary) 60%, transparent); }
+    .btn--light { --btn-bg: var(--block-ink); --btn-fg: var(--primary); }
+    .btn--ghost-light { --btn-bg: transparent; --btn-fg: var(--block-ink); border-color: color-mix(in srgb, var(--block-ink) 40%, transparent); }
+
+    @media (hover: hover) {
+      .btn--primary:hover { --btn-bg: var(--primary-2); transform: translateY(-1px); }
+      .btn--light:hover { --btn-bg: #fff; transform: translateY(-1px); box-shadow: 0 12px 28px -14px rgb(0 0 0 / 0.45); }
+      .btn--ghost-light:hover { border-color: var(--accent-soft); }
+      .btn--ghost-light:hover i { transform: translateX(3px); }
+    }
+    .btn--ghost-light i { transition: transform 0.25s var(--ease); }
+
+    .icon-btn {
+      display: grid; place-items: center;
+      width: 46px; height: 46px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 1.15rem;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s var(--ease), opacity 0.2s;
+    }
+    .icon-btn:active { transform: scale(0.94); }
+    .icon-btn:disabled { opacity: 0.35; cursor: default; }
+    @media (hover: hover) { .icon-btn:not(:disabled):hover { border-color: var(--primary); } }
+
+    /* ---------- Header ---------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--block);
+      color: var(--block-ink);
+      padding-top: env(safe-area-inset-top, 0px);
+      transition: box-shadow 0.3s var(--ease);
+    }
+    .site-header.is-scrolled { box-shadow: 0 1px 0 rgb(255 255 255 / 0.08), 0 10px 30px -18px rgb(0 0 0 / 0.5); }
+
+    .nav {
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: 12px;
+      text-decoration: none; font-weight: 800; font-size: 1.125rem; letter-spacing: -0.01em;
+    }
+    .brand svg { width: 30px; height: auto; flex: none; }
+
+    .nav-links { display: flex; gap: 28px; margin-left: auto; }
+    .nav-links a {
+      font-size: 0.9375rem; font-weight: 500; text-decoration: none;
+      color: var(--block-muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--block-ink); }
+
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+
+    .nav-toggle,
+    .theme-toggle {
+      display: grid;
+      width: 44px; height: 44px;
+      border: 1px solid rgb(255 255 255 / 0.2);
+      border-radius: var(--radius-pill);
+      background: transparent; color: var(--block-ink);
+      place-items: center;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.16s var(--ease), border-color 0.2s ease;
+    }
+    .nav-toggle { display: none; }
+    .nav-toggle:active, .theme-toggle:active { transform: scale(0.94); }
+    .nav-toggle[aria-expanded="true"] { border-color: color-mix(in srgb, var(--accent-soft) 60%, transparent); }
+    @media (hover: hover) { .theme-toggle:hover { border-color: color-mix(in srgb, var(--accent-soft) 60%, transparent); } }
+
+    /* Toggle de tema: mostra a lua no tema claro e o sol no escuro */
+    .theme-toggle i { font-size: 1.2rem; }
+    .theme-toggle .ph-sun,
+    [data-theme="dark"] .theme-toggle .ph-moon { display: none; }
+    [data-theme="dark"] .theme-toggle .ph-sun { display: block; }
+
+    /* Hambúrguer: duas linhas que giram até formar um X (estado aberto/fechado) */
+    .burger { position: relative; width: 18px; height: 12px; }
+    .burger span {
+      position: absolute; left: 0; right: 0;
+      height: 1.5px;
+      border-radius: 2px;
+      background: currentColor;
+      transition: transform 0.24s var(--ease-in-out);
+    }
+    .burger span:first-child { top: 2px; }
+    .burger span:last-child { bottom: 2px; }
+    .nav-toggle[aria-expanded="true"] .burger span:first-child { transform: translateY(3.25px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] .burger span:last-child { transform: translateY(-3.25px) rotate(-45deg); }
+
+    /* Menu mobile: painel em tela cheia revelado de cima para baixo com clip-path.
+       Abrir: 420ms curva de drawer + links em cascata (45ms).
+       Fechar: 240ms, tudo junto (o usuário já decidiu sair, não faz esperar). */
+    .mobile-menu {
+      position: fixed;
+      top: calc(var(--nav-h) + env(safe-area-inset-top, 0px));
+      left: 0; right: 0; bottom: 0;
+      background: var(--block);
+      border-top: 1px solid rgb(255 255 255 / 0.1);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      clip-path: inset(0 0 100% 0);
+      visibility: hidden;
+      transition:
+        clip-path 0.24s var(--ease),
+        visibility 0s linear 0.24s;
+    }
+    .mobile-menu.is-open {
+      clip-path: inset(0 0 0 0);
+      visibility: visible;
+      transition:
+        clip-path 0.42s var(--ease-drawer),
+        visibility 0s;
+    }
+    .mobile-menu__inner {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding-block: 12px calc(24px + env(safe-area-inset-bottom, 0px));
+    }
+    .mobile-menu__links { list-style: none; }
+    .mobile-menu__links li,
+    .mobile-menu__foot {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.16s ease, transform 0.24s var(--ease);
+    }
+    .mobile-menu.is-open .mobile-menu__links li,
+    .mobile-menu.is-open .mobile-menu__foot {
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.36s var(--ease), transform 0.42s var(--ease);
+      transition-delay: calc(90ms + var(--i, 0) * 45ms);
+    }
+    .mobile-menu__links a {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 0;
+      border-bottom: 1px solid rgb(255 255 255 / 0.1);
+      font-size: 1.625rem; font-weight: 700; letter-spacing: -0.02em;
+      text-decoration: none;
+      color: var(--block-ink);
+    }
+    .mobile-menu__links a i { font-size: 1.35rem; color: var(--accent-soft); transition: transform 0.2s var(--ease); }
+    .mobile-menu__links a:active i { transform: translateX(4px); }
+    .mobile-menu__foot { margin-top: auto; padding-top: 32px; display: grid; gap: 16px; }
+    .mobile-menu__foot p {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font-size: 0.875rem; color: var(--block-muted);
+    }
+    .mobile-menu__foot p i { color: var(--accent-soft); font-size: 1.1rem; }
+
+    html.menu-open { overflow: hidden; }
+    html.menu-open .site-header { box-shadow: none; }
+
+    @media (max-width: 1023px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-actions { margin-left: auto; gap: 10px; }
+      .nav-toggle { display: grid; }
+    }
+    @media (min-width: 1024px) { .mobile-menu { display: none !important; } }
+    @media (min-width: 1024px) and (max-width: 1199px) {
+      .nav { gap: 24px; }
+      .nav-links { gap: 20px; }
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      background:
+        radial-gradient(60% 70% at 12% 18%, rgb(255 255 255 / 0.06), transparent 70%),
+        var(--block);
+      color: var(--block-ink);
+      padding-block: clamp(40px, 6vw, 72px) clamp(140px, 14vw, 180px);
+      overflow: hidden;
+    }
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: clamp(40px, 6vw, 96px);
+      min-height: min(calc(100dvh - var(--nav-h) - 200px), 640px);
+    }
+    .hero__title {
+      font-size: clamp(2.6rem, 5.6vw, 4.6rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      padding-bottom: 4px;
+    }
+    .hero__title em { font-style: normal; color: var(--accent-soft); }
+    .hero__lead {
+      margin-top: 24px;
+      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+      color: var(--block-muted);
+      max-width: 44ch;
+    }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+
+    .hero__media {
+      position: relative;
+      justify-self: end;
+      width: min(100%, 460px);
+    }
+    .hero__media img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: 40% 50%;
+      border-radius: 999px 999px var(--radius) var(--radius);
+    }
+    /* Contorno decorativo deslocado na cor de acento */
+    .hero__ring {
+      position: absolute;
+      inset: -14px -14px 28px 28px;
+      border: 1px solid color-mix(in srgb, var(--accent-soft) 55%, transparent);
+      border-radius: 999px 999px var(--radius) var(--radius);
+      pointer-events: none;
+    }
+
+    @media (max-width: 767px) {
+      .hero__grid { grid-template-columns: 1fr; min-height: 0; gap: 48px; }
+      .hero__media { justify-self: center; width: min(86%, 380px); }
+      .hero__actions .btn { flex: 1 1 auto; }
+    }
+
+    /* ---------- Diferenciais ---------- */
+    .diffs { position: relative; margin-top: calc(-1 * clamp(96px, 10vw, 128px)); z-index: 1; }
+    .diffs__panel {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(32px, 4vw, 52px);
+    }
+    .diffs__title {
+      font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+      font-weight: 800;
+      color: var(--ink);
+      max-width: 24ch;
+      margin-bottom: clamp(28px, 3vw, 40px);
+    }
+    .diffs__list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(var(--diffs-n, 5), 1fr);
+      gap: 28px;
+    }
+    .diffs__list li { padding-right: 8px; }
+    .diffs__list li + li { border-left: 1px solid var(--line); padding-left: 24px; }
+    .diffs__list i { font-size: 2rem; color: var(--accent); }
+    .diffs__list h3 { font-size: 1rem; font-weight: 700; margin-top: 14px; }
+    .diffs__list p { font-size: 0.9rem; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+    @media (max-width: 1023px) {
+      .diffs__list { grid-template-columns: repeat(2, 1fr); gap: 28px 32px; }
+      .diffs__list li + li { border-left: 0; padding-left: 0; }
+      .diffs__list li:nth-child(odd):last-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 519px) {
+      .diffs__list { grid-template-columns: 1fr; }
+      .diffs__list li { display: grid; grid-template-columns: 40px 1fr; column-gap: 14px; }
+      .diffs__list i { grid-row: span 2; font-size: 1.75rem; }
+      .diffs__list h3 { margin-top: 2px; }
+    }
+
+    /* ---------- Tratamentos · bento ---------- */
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: minmax(230px, auto);
+      gap: 16px;
+    }
+    .tile {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 16px;
+      min-height: 230px;
+      padding: 28px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      isolation: isolate;
+      text-decoration: none;
+      color: var(--ink);
+      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    }
+    .tile h3 { font-size: 1.2rem; font-weight: 700; }
+    .tile p { font-size: 0.95rem; margin-top: 6px; color: var(--muted); max-width: 36ch; }
+    .tile__icon { font-size: 2.25rem; color: var(--accent); margin-bottom: auto; }
+    .tile__arrow {
+      position: absolute; top: 22px; right: 22px;
+      display: grid; place-items: center;
+      width: 40px; height: 40px;
+      border-radius: var(--radius-pill);
+      font-size: 1.05rem;
+      background: rgb(255 255 255 / 0.9);
+      color: var(--primary);
+      transition: transform 0.35s var(--ease);
+    }
+    @media (hover: hover) {
+      .tile:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+      .tile:hover .tile__arrow { transform: rotate(45deg); }
+      .tile--photo:hover img { transform: scale(1.04); }
+    }
+    .tile:active { transform: scale(0.99); }
+
+    .tile--feature { grid-column: span 2; grid-row: span 2; min-height: 480px; padding: 36px; }
+    .tile--wide { grid-column: span 2; }
+
+    .tile--photo { color: #fff; }
+    .tile--photo img {
+      position: absolute; inset: 0; z-index: -2;
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.8s var(--ease);
+    }
+    .tile--photo::before {
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--overlay) 0%, transparent) 18%, color-mix(in srgb, var(--overlay) 55%, transparent) 55%, color-mix(in srgb, var(--overlay) 90%, transparent) 100%);
+    }
+    .tile--photo p { color: rgb(255 255 255 / 0.85); }
+    .tile--feature h3 { font-size: clamp(1.5rem, 2.4vw, 2rem); }
+    .tile__stat {
+      display: block;
+      font-size: clamp(3rem, 6vw, 4.75rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--accent-soft);
+      margin-bottom: 10px;
+    }
+
+    .tile--tint { background: var(--tint); }
+    .tile--accent { background: var(--tint-accent); }
+    .tile--plain { background: var(--surface); border: 1px solid var(--line); }
+    .tile--primary { background: var(--block); color: var(--block-ink); }
+    .tile--primary p { color: var(--block-muted); }
+    .tile--primary .tile__icon { color: var(--accent-soft); }
+
+    @media (max-width: 1023px) {
+      .bento { grid-template-columns: repeat(2, 1fr); }
+      .tile--feature { grid-column: span 2; grid-row: auto; min-height: 420px; }
+    }
+    @media (max-width: 639px) {
+      .bento { grid-template-columns: 1fr; }
+      .tile--feature, .tile--wide { grid-column: auto; }
+      .tile--feature { min-height: 380px; padding: 28px; }
+      .tile { min-height: 200px; }
+    }
+
+    /* ---------- Tecnologia ---------- */
+    .tech {
+      background: var(--block);
+      color: var(--block-ink);
+      padding-block: clamp(80px, 10vw, 128px);
+    }
+    .tech__grid {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: clamp(40px, 6vw, 96px);
+      align-items: center;
+    }
+    .tech__media img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 999px 999px var(--radius) var(--radius);
+    }
+    .tech__list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px 40px;
+      margin-top: clamp(36px, 4vw, 52px);
+      padding-top: clamp(28px, 3vw, 40px);
+      border-top: 1px solid rgb(255 255 255 / 0.14);
+    }
+    .tech__list li { display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start; }
+    .tech__list i {
+      display: grid; place-items: center;
+      width: 48px; height: 48px;
+      border-radius: var(--radius-pill);
+      border: 1px solid color-mix(in srgb, var(--accent-soft) 45%, transparent);
+      color: var(--accent-soft);
+      font-size: 1.5rem;
+    }
+    .tech__list h3 { font-size: 1.05rem; font-weight: 700; margin-top: 2px; }
+    .tech__list p { font-size: 0.925rem; color: var(--block-muted); margin-top: 4px; }
+
+    @media (max-width: 1023px) {
+      .tech__grid { grid-template-columns: 1fr; }
+      .tech__media { width: min(100%, 440px); }
+    }
+    @media (max-width: 639px) {
+      .tech__list { grid-template-columns: 1fr; gap: 24px; }
+    }
+
+    /* ---------- Humanização ---------- */
+    .human__copy { max-width: 920px; }
+    .human__title {
+      font-size: clamp(2rem, 4.4vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+    .human__title em { font-style: normal; color: var(--primary); }
+    [data-theme="dark"] .human__title em { color: var(--accent-soft); }
+    .human__copy .lead { margin-top: 24px; }
+
+    .human__band {
+      display: grid;
+      grid-template-columns: 6fr 3.2fr 4fr;
+      gap: 16px;
+      align-items: end;
+      margin-top: clamp(48px, 6vw, 80px);
+    }
+    .human__band img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); }
+    .human__a img { aspect-ratio: 4 / 3; }
+    .human__b { margin-bottom: clamp(32px, 5vw, 72px); }
+    .human__b img { aspect-ratio: 3 / 4; }
+    .human__c img { aspect-ratio: 1 / 1; }
+
+    @media (max-width: 767px) {
+      .human__band { grid-template-columns: 1fr 1fr; }
+      .human__a { grid-column: 1 / -1; }
+      .human__b { margin-bottom: 0; }
+      .human__b img, .human__c img { aspect-ratio: 3 / 4; }
+    }
+
+    /* ---------- Como funciona ---------- */
+    .journey { background: var(--surface-2); }
+    .journey__steps {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      position: relative;
+      counter-reset: step;
+    }
+    /* Linha que conecta os passos (desktop) */
+    .journey__steps::before {
+      content: "";
+      position: absolute;
+      top: 36px;
+      left: calc(100% / 6);
+      right: calc(100% / 6);
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), var(--line) 50%, var(--accent));
+    }
+    .journey__steps li { position: relative; text-align: center; padding-inline: 12px; }
+    .journey__icon {
+      display: grid; place-items: center;
+      width: 72px; height: 72px;
+      margin: 0 auto 24px;
+      border-radius: var(--radius-pill);
+      background: var(--primary);
+      color: var(--accent-soft);
+      font-size: 2rem;
+      box-shadow: 0 0 0 8px var(--surface-2);
+    }
+    .journey__steps h3 { font-size: 1.2rem; font-weight: 700; }
+    .journey__steps p { color: var(--muted); margin: 10px auto 0; max-width: 32ch; font-size: 0.975rem; }
+    .journey__cta { display: flex; justify-content: center; margin-top: clamp(48px, 5vw, 64px); }
+
+    @media (max-width: 767px) {
+      .journey__steps { grid-template-columns: 1fr; gap: 36px; }
+      .journey__steps::before {
+        top: 36px; bottom: 36px; left: 36px; right: auto; width: 1px; height: auto;
+        background: linear-gradient(180deg, var(--accent), var(--line));
+      }
+      .journey__steps li { text-align: left; display: grid; grid-template-columns: 72px 1fr; column-gap: 20px; padding: 0; }
+      .journey__icon { grid-row: span 2; margin: 0; }
+      .journey__steps h3 { align-self: end; }
+      .journey__steps p { margin: 6px 0 0; }
+    }
+
+    /* ---------- Agendamento ---------- */
+    .tabs {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      padding: 5px;
+      margin-bottom: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-pill);
+      background: var(--surface-2);
+    }
+    .tabs__tab {
+      display: inline-flex; align-items: center; gap: 8px;
+      min-height: 46px;
+      padding: 0 20px;
+      border: 0;
+      border-radius: var(--radius-pill);
+      background: transparent;
+      color: var(--muted);
+      font: 600 0.95rem/1 var(--font);
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .tabs__tab i { font-size: 1.3rem; }
+    .tabs__tab[aria-selected="true"] {
+      background: var(--surface);
+      color: var(--ink);
+      box-shadow: 0 1px 2px color-mix(in srgb, var(--primary-deep) 8%, transparent), 0 4px 14px -6px color-mix(in srgb, var(--primary-deep) 20%, transparent);
+    }
+    .tabs__tab:active { transform: scale(0.98); }
+    .tabs__tag {
+      padding: 4px 8px;
+      border-radius: var(--radius-pill);
+      background: var(--tint-accent);
+      color: var(--accent-ink);
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+
+    .tab-panel { transition: opacity 0.24s var(--ease), transform 0.24s var(--ease); }
+    @starting-style {
+      .tab-panel { opacity: 0; transform: translateY(6px); }
+    }
+
+    .scheduler {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .scheduler__cal { padding: clamp(24px, 3vw, 36px); }
+    .scheduler__side {
+      padding: clamp(24px, 3vw, 36px);
+      border-left: 1px solid var(--line);
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cal__head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .cal__month { font-size: 1.15rem; font-weight: 700; text-transform: capitalize; }
+    .cal__nav { display: flex; gap: 8px; }
+    .icon-btn--sm { width: 38px; height: 38px; font-size: 1rem; }
+    .cal__weekdays {
+      display: grid; grid-template-columns: repeat(7, 1fr);
+      margin: 24px 0 8px;
+      text-align: center;
+      font-size: 0.78rem; font-weight: 700; color: var(--muted);
+    }
+    .cal__grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+    .cal__day {
+      position: relative;
+      justify-self: center;
+      width: 100%; max-width: 48px;
+      aspect-ratio: 1;
+      border: 0;
+      border-radius: var(--radius-pill);
+      background: transparent;
+      color: var(--ink);
+      font: 600 0.95rem/1 var(--font);
+      cursor: pointer;
+      transition: background-color 0.18s ease, color 0.18s ease, transform 0.16s var(--ease);
+    }
+    .cal__day.is-available::after {
+      content: "";
+      position: absolute; left: 50%; bottom: 7px;
+      width: 4px; height: 4px; margin-left: -2px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .cal__day.is-today { box-shadow: inset 0 0 0 1px var(--field-border); }
+    .cal__day:disabled { color: var(--muted); opacity: 0.45; cursor: default; }
+    .cal__day:not(:disabled):active { transform: scale(0.94); }
+    .cal__day[aria-pressed="true"] { background: var(--primary); color: #fff; }
+    .cal__day[aria-pressed="true"]::after { background: #fff; }
+    @media (hover: hover) and (pointer: fine) {
+      .cal__day:not(:disabled):not([aria-pressed="true"]):hover { background: var(--tint); }
+    }
+    .cal__legend {
+      display: flex; align-items: center; gap: 8px;
+      margin-top: 20px;
+      font-size: 0.82rem; color: var(--muted);
+    }
+    .cal__legend-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+    .steps { list-style: none; display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+    .steps li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.82rem; font-weight: 600; color: var(--muted);
+      transition: color 0.2s ease;
+    }
+    .steps li + li::before { content: ""; width: 18px; height: 1px; background: var(--field-border); }
+    .steps li.is-done { color: var(--accent-ink); }
+    .steps li.is-active { color: var(--ink); }
+
+    .step { transition: opacity 0.24s var(--ease), transform 0.24s var(--ease); }
+    @starting-style {
+      .step { opacity: 0; transform: translateY(8px); }
+    }
+    .step[data-step="empty"] { flex: 1; display: grid; place-items: center; }
+    .step[data-step="empty"][hidden] { display: none; }
+    .step__empty { text-align: center; max-width: 30ch; }
+    .step__empty i { font-size: 2.5rem; color: var(--accent); }
+    .step__title { font-size: 1.15rem; font-weight: 700; margin-top: 8px; }
+    .step__hint { font-size: 0.92rem; color: var(--muted); margin-top: 6px; }
+    .step__title:first-child { margin-top: 0; }
+
+    .slots {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .slot {
+      min-height: 46px;
+      border: 1px solid var(--field-border);
+      border-radius: var(--radius-pill);
+      background: var(--surface);
+      color: var(--ink);
+      font: 600 0.92rem/1 var(--font);
+      cursor: pointer;
+      transition: border-color 0.18s ease, background-color 0.18s ease, color 0.18s ease, transform 0.16s var(--ease);
+    }
+    .slot:not(:disabled):active { transform: scale(0.96); }
+    .slot:disabled {
+      border-style: dashed;
+      border-color: var(--line);
+      background: var(--surface-2);
+      color: var(--muted);
+      text-decoration: line-through;
+      cursor: default;
+    }
+    .slot[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: #fff; }
+    @media (hover: hover) and (pointer: fine) {
+      .slot:not(:disabled):not([aria-pressed="true"]):hover { border-color: var(--primary); }
+    }
+
+    .summary {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 14px;
+      border-radius: var(--radius-field);
+      background: var(--tint);
+      font-weight: 600; font-size: 0.95rem;
+    }
+    .summary i { font-size: 1.3rem; color: var(--accent); }
+    .summary .link-btn { margin-left: auto; }
+
+    .link-btn {
+      padding: 4px 0;
+      border: 0;
+      background: none;
+      color: var(--primary);
+      font: 700 0.88rem/1.4 var(--font);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+    }
+    .link-btn:hover { text-decoration-thickness: 2px; }
+
+    .done { display: grid; justify-items: center; text-align: center; gap: 6px; }
+    .done__icon {
+      display: grid; place-items: center;
+      width: 60px; height: 60px;
+      margin: 0 auto 6px;
+      border-radius: var(--radius-pill);
+      background: var(--tint);
+      color: var(--primary);
+      font-size: 1.7rem;
+    }
+    .done .btn { margin-top: 14px; }
+    .event {
+      width: 100%;
+      display: grid; gap: 8px;
+      margin-top: 16px;
+      padding: 16px 18px;
+      text-align: left;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-field);
+      background: var(--surface-2);
+    }
+    .event__title { font-weight: 700; }
+    .event p:not(.event__title) { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--muted); }
+    .event i { font-size: 1.1rem; color: var(--accent); }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .done__icon, .mail__done .done__icon { animation: pop 0.32s var(--ease) both; }
+    }
+    @keyframes pop {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* Nota de apresentação (pitch) */
+    .pitch-note {
+      margin-top: 20px;
+      padding: clamp(20px, 3vw, 28px);
+      border: 1px dashed var(--field-border);
+      border-radius: var(--radius);
+    }
+    .pitch-note__title {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.95rem; font-weight: 700; color: var(--accent-ink);
+    }
+    .pitch-note__title i { font-size: 1.25rem; }
+    .pitch-note ul { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 18px; }
+    .pitch-note li { display: grid; grid-template-columns: 32px 1fr; gap: 12px; }
+    .pitch-note li i { font-size: 1.5rem; color: var(--accent); }
+    .pitch-note h3 { font-size: 0.95rem; font-weight: 700; letter-spacing: -0.01em; }
+    .pitch-note li p { font-size: 0.88rem; color: var(--muted); margin-top: 4px; }
+    .pitch-note__foot { margin-top: 18px; font-size: 0.82rem; color: var(--muted); }
+
+    /* Formulários */
+    .form { display: grid; gap: 18px; align-content: start; }
+    .field { display: grid; gap: 8px; min-width: 0; align-content: start; }
+    fieldset.field { border: 0; padding: 0; margin: 0; }
+    .field label, .field legend { font-size: 0.9rem; font-weight: 600; color: var(--ink); padding: 0; }
+    .field__opt { font-weight: 500; color: var(--muted); }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .form input:not([type="radio"]):not([type="checkbox"]),
+    .form select,
+    .form textarea {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 14px;
+      border: 1px solid var(--field-border);
+      border-radius: var(--radius-field);
+      background: var(--surface);
+      color: var(--ink);
+      font: 500 1rem/1.4 var(--font); /* 16px evita zoom no iOS */
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+    .form textarea { resize: vertical; min-height: 96px; }
+    .form ::placeholder { color: var(--muted); opacity: 1; }
+    .form input:focus-visible,
+    .form select:focus-visible,
+    .form textarea:focus-visible {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 18%, transparent);
+    }
+    .form [aria-invalid="true"] { border-color: var(--error) !important; }
+    .field__help { font-size: 0.84rem; color: var(--muted); }
+    .field__error { font-size: 0.84rem; font-weight: 600; color: var(--error); }
+    .field__error:empty { display: none; }
+
+    .choice-group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .choice { position: relative; }
+    .choice input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+    .choice span {
+      display: inline-flex; align-items: center; gap: 8px;
+      min-height: 48px;
+      padding: 0 18px;
+      border: 1px solid var(--field-border);
+      border-radius: var(--radius-pill);
+      font-weight: 600; font-size: 0.95rem;
+      transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+    }
+    .choice span i { font-size: 1.2rem; color: var(--accent); }
+    .choice input:checked + span { background: var(--tint); border-color: var(--primary); color: var(--primary); }
+    .choice input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .check { display: flex; align-items: flex-start; gap: 12px; font-weight: 500 !important; color: var(--muted) !important; cursor: pointer; }
+    .check input { width: 20px; height: 20px; margin: 1px 0 0; flex: none; accent-color: var(--primary); }
+
+    .btn[aria-busy="true"] { opacity: 0.85; cursor: progress; }
+    .btn[aria-busy="true"] i { animation: spin 0.9s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .mail { display: grid; grid-template-columns: 1.7fr 1fr; gap: 20px; align-items: start; }
+    .mail__form,
+    .mail__done {
+      padding: clamp(24px, 3vw, 36px);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .mail__form .btn { justify-self: start; }
+    .mail__done { text-align: center; display: grid; justify-items: center; gap: 6px; min-height: 360px; align-content: center; }
+    .mail__done a { color: var(--primary); font-weight: 700; }
+    .mail__done .link-btn { margin-top: 10px; }
+    .mail__aside {
+      padding: clamp(24px, 3vw, 32px);
+      border-radius: var(--radius);
+      background: var(--block);
+      color: var(--block-ink);
+    }
+    .mail__aside-title { font-weight: 700; font-size: 1.05rem; }
+    .mail__aside ol { list-style: none; display: grid; gap: 18px; margin-top: 20px; }
+    .mail__aside li { display: flex; gap: 12px; font-size: 0.95rem; color: var(--block-muted); }
+    .mail__aside li i { flex: none; font-size: 1.4rem; color: var(--accent-soft); }
+
+    [data-theme="dark"] .link-btn, [data-theme="dark"] .mail__done a { color: var(--accent-soft); }
+    [data-theme="dark"] .done__icon { color: var(--accent-soft); }
+    [data-theme="dark"] .choice input:checked + span { color: var(--accent-soft); border-color: var(--accent-soft); }
+    [data-theme="dark"] .form input:focus-visible,
+    [data-theme="dark"] .form select:focus-visible,
+    [data-theme="dark"] .form textarea:focus-visible {
+      border-color: var(--accent-soft);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-soft) 20%, transparent);
+    }
+
+    @media (max-width: 1023px) {
+      .scheduler { grid-template-columns: 1fr; }
+      .scheduler__side { border-left: 0; border-top: 1px solid var(--line); min-height: 0; }
+      .step[data-step="empty"] { padding-block: 16px; }
+      .pitch-note ul { grid-template-columns: 1fr; gap: 18px; }
+      .mail { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 639px) {
+      .tabs { display: flex; width: 100%; }
+      .tabs__tab { flex: 1; justify-content: center; padding: 0 12px; }
+      .field-row { grid-template-columns: 1fr; }
+      .mail__form .btn { justify-self: stretch; }
+      .cal__grid { gap: 4px; }
+    }
+
+    /* ---------- Resultados · galeria ---------- */
+    .results { padding-bottom: clamp(24px, 4vw, 48px); }
+    .results__head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: clamp(32px, 4vw, 48px);
+    }
+    .results__nav { display: flex; gap: 10px; flex-shrink: 0; }
+
+    .gallery {
+      --gutter: max(20px, calc((100vw - 1240px) / 2 + min(4vw, 40px)));
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline: var(--gutter);
+      padding-inline: var(--gutter);
+      padding-bottom: 8px;
+      scrollbar-width: none;
+      overscroll-behavior-x: contain;
+    }
+    .gallery::-webkit-scrollbar { display: none; }
+    .gallery__item { flex: none; scroll-snap-align: start; height: clamp(320px, 38vw, 480px); }
+    .gallery__item--tall { aspect-ratio: 3 / 4; }
+    .gallery__item--wide { aspect-ratio: 4 / 3; }
+    .gallery__item img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); }
+
+    @media (max-width: 639px) {
+      .results__nav { display: none; }
+      .gallery__item { height: 360px; }
+      .gallery__item--wide { aspect-ratio: 3 / 4; }
+    }
+
+    /* ---------- FAQ ---------- */
+    .faq__grid { display: grid; grid-template-columns: 4fr 7fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
+    .faq__intro { position: sticky; top: calc(var(--nav-h) + 32px); }
+    .faq__item { border-bottom: 1px solid var(--line); }
+    .faq__item:first-child { border-top: 1px solid var(--line); }
+    .faq__item h3 { font-size: inherit; letter-spacing: normal; }
+    .faq__item button {
+      width: 100%;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+      padding: 24px 0;
+      background: none; border: 0;
+      font: 700 1.075rem/1.4 var(--font);
+      color: var(--ink);
+      text-align: left;
+      cursor: pointer;
+    }
+    .faq__item button i {
+      flex: none;
+      display: grid; place-items: center;
+      width: 34px; height: 34px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--line);
+      color: var(--primary);
+      transition: transform 0.35s var(--ease), background-color 0.25s, color 0.25s;
+    }
+    [data-theme="dark"] .faq__item button i { color: var(--accent-soft); }
+    .faq__item button[aria-expanded="true"] i { transform: rotate(45deg); background: var(--primary); color: #fff; border-color: var(--primary); }
+    .faq__panel {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.4s var(--ease);
+    }
+    .faq__panel > div { overflow: hidden; }
+    .faq__panel p { color: var(--muted); padding-bottom: 24px; max-width: 60ch; }
+    .faq__item.is-open .faq__panel { grid-template-rows: 1fr; }
+
+    @media (max-width: 1023px) {
+      .faq__grid { grid-template-columns: 1fr; }
+      .faq__intro { position: static; }
+    }
+
+    /* ---------- Contato + CTA final ---------- */
+    .contact {
+      background:
+        radial-gradient(50% 60% at 90% 10%, rgb(255 255 255 / 0.05), transparent 70%),
+        var(--block);
+      color: var(--block-ink);
+      padding-top: clamp(80px, 10vw, 128px);
+    }
+    .contact__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: center; }
+    .contact__logo { display: block; width: 44px; height: auto; margin-bottom: 28px; }
+    .contact__copy .btn { margin-top: 36px; }
+    .contact__info {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+      margin: 48px 0 0;
+      padding-top: 32px;
+      border-top: 1px solid rgb(255 255 255 / 0.14);
+    }
+    .contact__info dt {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--accent-soft);
+    }
+    .contact__info dt i { font-size: 1.15rem; }
+    .contact__info dd { margin: 10px 0 0; color: var(--block-muted); font-size: 0.95rem; line-height: 1.6; }
+    .contact__info a { text-decoration: none; color: var(--block-ink); font-weight: 600; }
+    .contact__info a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+    .contact__map {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4 / 3.4;
+      background: var(--primary-deep);
+      box-shadow: 0 30px 60px -30px rgb(0 0 0 / 0.5);
+    }
+    .contact__map iframe { width: 100%; height: 100%; border: 0; display: block; filter: saturate(0.85); }
+
+    .footer { margin-top: clamp(64px, 8vw, 104px); border-top: 1px solid rgb(255 255 255 / 0.1); }
+    .footer__row {
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px;
+      padding-block: 28px calc(28px + env(safe-area-inset-bottom, 0px));
+      font-size: 0.85rem;
+      color: var(--block-muted);
+    }
+
+    @media (max-width: 1023px) {
+      .contact__grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 519px) {
+      .contact__info { grid-template-columns: 1fr; }
+      .contact__copy .btn { width: 100%; }
+    }
+
+    /* ---------- CTA fixo mobile ---------- */
+    .mobile-cta {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 40;
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--line);
+      transform: translateY(110%);
+      transition: transform 0.4s var(--ease);
+    }
+    .mobile-cta.is-visible { transform: none; }
+    @media (min-width: 768px) { .mobile-cta { display: none; } }
+
+    /* ==========================================================================
+       Movimento
+       - Entrada do hero: hierarquia (título, texto, ação)
+       - Reveal no scroll: conteúdo chega em sequência conforme a leitura
+       Tudo desativado com prefers-reduced-motion.
+       ========================================================================== */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero__in {
+        animation: rise 0.9s var(--ease) both;
+        animation-delay: calc(var(--d, 0) * 110ms + 80ms);
+      }
+      .js [data-reveal] {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+        transition-delay: calc(var(--i, 0) * 80ms);
+      }
+      .js [data-reveal].is-in { opacity: 1; transform: none; }
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+
+      /* Menu mobile: sem deslocamento, só um fade curto (ajuda a entender a troca de contexto) */
+      .mobile-menu { clip-path: none; opacity: 0; transition: opacity 0.2s ease, visibility 0s linear 0.2s !important; }
+      .mobile-menu.is-open { opacity: 1; transition: opacity 0.2s ease, visibility 0s !important; }
+      .mobile-menu__links li, .mobile-menu__foot { opacity: 1; transform: none; }
+    }
+
+    /* Foco movido por script (confirmações) não precisa de contorno; o leitor de tela anuncia o conteúdo */
+    [tabindex="-1"]:focus { outline: none; }
+
+    /* ---------- Parametrização (render.py) ---------- */
+    h1, h2, .brand span { font-family: var(--font-display); }
+    .logo-img { display: block; width: auto; max-width: 200px; height: var(--logo-h, 30px); object-fit: contain; flex: none; }
+    .contact__logo.logo-img { width: auto; height: calc(var(--logo-h, 30px) * 1.45); max-width: 240px; }
+    .logo-img--white { filter: brightness(0) invert(1); }
+    .logo-img--badge { box-sizing: content-box; background: #fff; padding: 6px 12px; border-radius: var(--radius-field); }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ============ NAV ============ -->
+  <header class="site-header" data-header>
+    <div class="container nav">
+      <a class="brand" href="#topo" aria-label="Dra. Veronica Abreu, página inicial">
+        <svg class="logo" aria-hidden="true" focusable="false" viewBox="0 0 32 32" width="30" height="30" fill="none">
+          <path d="M16 7.2c-2.1-1.6-4.6-2.1-6.6-1.3C6.3 7.1 5.4 10.1 5.9 13c.4 2.4 1.4 4.1 1.8 6.6.5 3 .8 6.9 2.7 8.2 1.8 1.2 2.6-2.4 3-4.6.4-2 .9-3.2 2.6-3.2s2.2 1.2 2.6 3.2c.4 2.2 1.2 5.8 3 4.6 1.9-1.3 2.2-5.2 2.7-8.2.4-2.5 1.4-4.2 1.8-6.6.5-2.9-.4-5.9-3.5-7.1-2-.8-4.5-.3-6.6 1.3z" stroke="#fcf7fb" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M21.5 9.5c.9.4 1.5 1.2 1.6 2.3" stroke="#ffddf7" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <span>Dra. Veronica Abreu</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Principal">
+        <a href="#tratamentos">Tratamentos</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#agendar">Agendamento</a>
+        <a href="#contato">Contato</a>
+        
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" aria-pressed="false" title="Alternar tema claro/escuro" data-theme-toggle>
+          <span class="sr-only">Tema escuro</span>
+          <i class="ph ph-moon" aria-hidden="true"></i>
+          <i class="ph ph-sun" aria-hidden="true"></i>
+        </button>
+
+        <a class="btn btn--light btn--sm nav-cta" href="https://wa.me/5519996684845" data-wa>
+          <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
+          Agendar avaliação
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile" data-nav-toggle>
+          <span class="sr-only">Abrir menu</span>
+          <span class="burger" aria-hidden="true"><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu mobile em tela cheia. Fechado: invisível e fora da ordem de foco (visibility: hidden). -->
+    <div class="mobile-menu" id="menu-mobile" data-mobile-menu>
+      <nav class="container mobile-menu__inner" aria-label="Menu móvel">
+        <ul class="mobile-menu__links" role="list">
+          <li style="--i:0"><a href="#tratamentos">Tratamentos<i class="ph-light ph-arrow-right" aria-hidden="true"></i></a></li>
+          <li style="--i:1"><a href="#como-funciona">Como funciona<i class="ph-light ph-arrow-right" aria-hidden="true"></i></a></li>
+          <li style="--i:2"><a href="#agendar">Agendamento<i class="ph-light ph-arrow-right" aria-hidden="true"></i></a></li>
+          <li style="--i:3"><a href="#duvidas">Dúvidas<i class="ph-light ph-arrow-right" aria-hidden="true"></i></a></li>
+          <li style="--i:4"><a href="#contato">Contato<i class="ph-light ph-arrow-right" aria-hidden="true"></i></a></li>
+          
+        </ul>
+        <div class="mobile-menu__foot" style="--i:5">
+          <a class="btn btn--light btn--block" href="https://wa.me/5519996684845" data-wa>
+            <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
+            Agendar avaliação
+          </a>
+          <p><i class="ph-light ph-map-pin" aria-hidden="true"></i>São João da Boa Vista</p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="topo" data-hero>
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow eyebrow--on-block hero__in" style="--d:0">Cirurgiã-dentista em São João da Boa Vista</p>
+          <h1 class="hero__title hero__in" style="--d:1">A atenção que<br><em>seu sorriso merece.</em></h1>
+          <p class="hero__lead hero__in" style="--d:2">Clínica geral e estética do sorriso com cuidado, confiança e bem-estar, do primeiro contato ao retorno.</p>
+          <div class="hero__actions hero__in" style="--d:3">
+            <a class="btn btn--light" href="https://wa.me/5519996684845" data-wa>
+              <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
+              Agendar avaliação
+            </a>
+            <a class="btn btn--ghost-light" href="#tratamentos">
+              Ver tratamentos
+              <i class="ph ph-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <figure class="hero__media hero__in" style="--d:2">
+          <span class="hero__ring" aria-hidden="true"></span>
+          <img
+            src="https://images.unsplash.com/photo-1777331903190-341a3dd0441b?auto=format&amp;fit=crop&amp;w=1100&amp;q=75"
+            alt="Dentista conversando com paciente sorridente no consultório"
+            width="880" height="1100" fetchpriority="high">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ DIFERENCIAIS (painel claro sobre o bloco de cor) ============ -->
+    <section class="diffs" aria-labelledby="diffs-title">
+      <div class="container">
+        <div class="diffs__panel" data-reveal>
+          <h2 class="diffs__title" id="diffs-title">Como é ser paciente da Dra. Veronica Abreu?</h2>
+          <ul class="diffs__list" role="list">
+            <li>
+              <i class="ph-light ph-hand-heart" aria-hidden="true"></i>
+              <h3>Atenção de verdade</h3>
+              <p>Você é ouvido antes de qualquer tratamento.</p>
+            </li>
+            <li>
+              <i class="ph-light ph-chats-circle" aria-hidden="true"></i>
+              <h3>Explicação clara</h3>
+              <p>Cada etapa é explicada para você decidir junto.</p>
+            </li>
+            <li>
+              <i class="ph-light ph-shield-check" aria-hidden="true"></i>
+              <h3>Prevenção em dia</h3>
+              <p>Retornos preventivos para manter o sorriso saudável.</p>
+            </li>
+            <li>
+              <i class="ph-light ph-whatsapp-logo" aria-hidden="true"></i>
+              <h3>Fácil de agendar</h3>
+              <p>Fale direto pelo WhatsApp (19) 99668-4845.</p>
+            </li>
+            <li>
+              <i class="ph-light ph-map-pin" aria-hidden="true"></i>
+              <h3>[HUMANO: detalhe local]</h3>
+              <p>[HUMANO: algo real do consultório ou do bairro em São João da Boa Vista]</p>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRATAMENTOS (bento, 7 itens = 7 células) ============ -->
+    <section class="section" id="tratamentos" aria-labelledby="trat-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <h2 class="h2" id="trat-title">Cuidado completo para o seu sorriso</h2>
+          <p class="lead">Da consulta de rotina à estética, cada tratamento começa com uma avaliação cuidadosa.</p>
+        </header>
+
+        <div class="bento">
+          <a class="tile tile--photo tile--feature" href="https://wa.me/5519996684845" data-wa data-wa-msg="facetas em resina composta" data-reveal style="--i:0">
+            <img src="https://images.unsplash.com/photo-1677026010083-78ec7f1b84ed?auto=format&amp;fit=crop&amp;w=1100&amp;q=75" alt="Close de sorriso com dentes claros e alinhados" loading="lazy" width="1100" height="900">
+            <div class="tile__body">
+              <h3>Facetas em resina composta</h3>
+              <p>Ajustam cor e forma dos dentes. A indicação é definida na avaliação.</p>
+            </div>
+            <i class="ph ph-arrow-up-right tile__arrow" aria-hidden="true"></i>
+          </a>
+
+          <a class="tile tile--photo" href="https://wa.me/5519996684845" data-wa data-wa-msg="clareamento dental" data-reveal style="--i:1">
+            <img src="https://images.unsplash.com/photo-1663755489920-5e09f66d011a?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="Paciente sorrindo durante atendimento odontológico" loading="lazy" width="700" height="700">
+            <div class="tile__body">
+              <h3>Clareamento dental</h3>
+              <p>Dentes mais claros com acompanhamento profissional.</p>
+            </div>
+            <i class="ph ph-arrow-up-right tile__arrow" aria-hidden="true"></i>
+          </a>
+
+          <a class="tile tile--tint" href="https://wa.me/5519996684845" data-wa data-wa-msg="clínica geral" data-reveal style="--i:2">
+            <i class="ph-light ph-tooth tile__icon" aria-hidden="true"></i>
+            <div class="tile__body">
+              <h3>Clínica geral</h3>
+              <p>Consultas, diagnóstico e retornos preventivos.</p>
+            </div>
+            <i class="ph ph-arrow-up-right tile__arrow" aria-hidden="true"></i>
+          </a>
+
+          <a class="tile tile--accent" href="https://wa.me/5519996684845" data-wa data-wa-msg="tratamento de canal" data-reveal style="--i:3">
+            <i class="ph-light ph-shield-check tile__icon" aria-hidden="true"></i>
+            <div class="tile__body">
+              <h3>Tratamento de canal</h3>
+              <p>Trata a polpa do dente para preservá-lo.</p>
+            </div>
+            <i class="ph ph-arrow-up-right tile__arrow" aria-hidden="true"></i>
+          </a>
+
+          <a class="tile tile--plain" href="https://wa.me/5519996684845" data-wa data-wa-msg="restaurações" data-reveal style="--i:4">
+            <i class="ph-light ph-sparkle tile__icon" aria-hidden="true"></i>
+            <div class="tile__body">
+              <h3>Restaurações</h3>
+              <p>Recuperam a forma e a função do dente.</p>
+            </div>
+            <i class="ph ph-arrow-up-right tile__arrow" aria-hidden="true"></i>
+          </a>
+
+          
+        </div>
+      </div>
+    </section>
+
+    
+
+    <!-- ============ HUMANIZAÇÃO (manifesto + faixa de fotos) ============ -->
+    <section class="section human" aria-labelledby="human-title">
+      <div class="container">
+        <div class="human__copy" data-reveal>
+          <h2 class="human__title" id="human-title">Antes de cuidar do seu sorriso, <em>eu escuto você.</em></h2>
+          <p class="lead">[HUMANO: história real da Dra. Veronica] Sou a Dra. Veronica, dentista comprometida em transformar sorrisos com cuidado, confiança e bem-estar.</p>
+        </div>
+
+        <div class="human__band">
+          <figure class="human__a" data-reveal style="--i:0">
+            <img src="https://images.unsplash.com/photo-1606811842243-af7e16970c1f?auto=format&amp;fit=crop&amp;w=1000&amp;q=75" alt="[HUMANO: foto real da Dra. Veronica no consultório]" loading="lazy" width="1000" height="750">
+          </figure>
+          <figure class="human__b" data-reveal style="--i:1">
+            <img src="https://images.unsplash.com/photo-1704455306251-b4634215d98f?auto=format&amp;fit=crop&amp;w=700&amp;q=75" alt="Consultório claro e moderno" loading="lazy" width="700" height="933">
+          </figure>
+          <figure class="human__c" data-reveal style="--i:2">
+            <img src="https://images.unsplash.com/photo-1609207825181-52d3214556dd?auto=format&amp;fit=crop&amp;w=800&amp;q=75" alt="Sala de atendimento com luz natural" loading="lazy" width="800" height="800">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COMO FUNCIONA (linha do tempo) ============ -->
+    <section class="section journey" id="como-funciona" aria-labelledby="journey-title">
+      <div class="container">
+        <header class="section-head section-head--center" data-reveal>
+          <h2 class="h2" id="journey-title">Seu tratamento começa com uma boa conversa</h2>
+          <p class="lead">Você sabe o que acontece depois do primeiro contato.</p>
+        </header>
+
+        <ol class="journey__steps" role="list">
+          <li data-reveal style="--i:0">
+            <span class="journey__icon"><i class="ph-light ph-whatsapp-logo" aria-hidden="true"></i></span>
+            <h3>Chame no WhatsApp</h3>
+            <p>Escolha o melhor horário para a sua avaliação.</p>
+          </li>
+          <li data-reveal style="--i:1">
+            <span class="journey__icon"><i class="ph-light ph-tooth" aria-hidden="true"></i></span>
+            <h3>Avaliação</h3>
+            <p>A Dra. Veronica examina, explica e monta o seu plano de tratamento.</p>
+          </li>
+          <li data-reveal style="--i:2">
+            <span class="journey__icon"><i class="ph-light ph-handshake" aria-hidden="true"></i></span>
+            <h3>Acompanhamento</h3>
+            <p>Atenção em todas as etapas e retornos preventivos.</p>
+          </li>
+          
+        </ol>
+
+        <div class="journey__cta" data-reveal>
+          <a class="btn btn--primary" href="https://wa.me/5519996684845" data-wa>
+            <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
+            Agendar avaliação
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AGENDAMENTO (agenda online + e-mail) ============ -->
+    <section class="section booking" id="agendar" aria-labelledby="booking-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <h2 class="h2" id="booking-title">Agende do seu jeito</h2>
+          <p class="lead">Escolha um horário na agenda online ou envie sua solicitação por e-mail. O WhatsApp continua à disposição.</p>
+        </header>
+
+        <div class="tabs" role="tablist" aria-label="Formas de agendamento" data-reveal data-tabs>
+          <button class="tabs__tab" type="button" role="tab" id="tab-agenda" aria-controls="panel-agenda" aria-selected="true">
+            <i class="ph-light ph-calendar-dots" aria-hidden="true"></i>
+            Agenda online
+            <span class="tabs__tag">Prévia</span>
+          </button>
+          <button class="tabs__tab" type="button" role="tab" id="tab-email" aria-controls="panel-email" aria-selected="false" tabindex="-1">
+            <i class="ph-light ph-envelope-simple" aria-hidden="true"></i>
+            Por e-mail
+          </button>
+        </div>
+
+        <!-- ---------- Painel 1: Agenda online (prévia da integração com Google Agenda) ---------- -->
+        <!-- PROTÓTIPO: horários e ocupação são simulados no navegador. Sem backend. -->
+        <div class="tab-panel" role="tabpanel" id="panel-agenda" aria-labelledby="tab-agenda" data-panel>
+          <div class="scheduler" data-scheduler>
+            <div class="scheduler__cal">
+              <div class="cal__head">
+                <p class="cal__month" aria-live="polite" data-cal-month>Outubro 2026</p>
+                <div class="cal__nav">
+                  <button class="icon-btn icon-btn--sm" type="button" data-cal-prev aria-label="Mês anterior"><i class="ph ph-caret-left" aria-hidden="true"></i></button>
+                  <button class="icon-btn icon-btn--sm" type="button" data-cal-next aria-label="Próximo mês"><i class="ph ph-caret-right" aria-hidden="true"></i></button>
+                </div>
+              </div>
+              <div class="cal__weekdays" aria-hidden="true">
+                <span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span>
+              </div>
+              <div class="cal__grid" data-cal-grid role="group" aria-label="Dias do mês"></div>
+              <p class="cal__legend"><span class="cal__legend-dot" aria-hidden="true"></span>Dias com horários livres</p>
+            </div>
+
+            <div class="scheduler__side">
+              <ol class="steps" role="list" aria-label="Etapas do agendamento">
+                <li data-step-label="day" class="is-active">Dia</li>
+                <li data-step-label="slot">Horário</li>
+                <li data-step-label="form">Seus dados</li>
+              </ol>
+
+              <!-- Etapa: nenhum dia escolhido -->
+              <div class="step" data-step="empty">
+                <div class="step__empty">
+                  <i class="ph-light ph-calendar-check" aria-hidden="true"></i>
+                  <p class="step__title">Escolha um dia no calendário</p>
+                  <p class="step__hint">Os horários livres aparecem aqui, direto da agenda da clínica.</p>
+                </div>
+              </div>
+
+              <!-- Etapa: horários do dia -->
+              <div class="step" data-step="slots" hidden>
+                <p class="step__title" data-slots-title>Horários</p>
+                <p class="step__hint">Consulta de avaliação com a Dra. Veronica.</p>
+                <div class="slots" data-slots role="group" aria-label="Horários disponíveis"></div>
+              </div>
+
+              <!-- Etapa: dados do paciente -->
+              <form class="step form" data-step="form" data-booking-form novalidate hidden>
+                <div class="summary">
+                  <i class="ph-light ph-clock" aria-hidden="true"></i>
+                  <p data-summary>Quinta, 9 de outubro às 10:00</p>
+                  <button class="link-btn" type="button" data-change-slot>Alterar</button>
+                </div>
+
+                <div class="field">
+                  <label for="bk-name">Nome completo</label>
+                  <input id="bk-name" name="name" type="text" autocomplete="name" required aria-describedby="bk-name-err">
+                  <p class="field__error" id="bk-name-err" data-error-for="bk-name"></p>
+                </div>
+                <div class="field-row">
+                  <div class="field">
+                    <label for="bk-email">E-mail</label>
+                    <input id="bk-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="bk-email-help bk-email-err">
+                    <p class="field__help" id="bk-email-help">O convite da consulta chega aqui.</p>
+                    <p class="field__error" id="bk-email-err" data-error-for="bk-email"></p>
+                  </div>
+                  <div class="field">
+                    <label for="bk-phone">WhatsApp</label>
+                    <input id="bk-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(00) 00000-0000" required aria-describedby="bk-phone-err" data-phone>
+                    <p class="field__error" id="bk-phone-err" data-error-for="bk-phone"></p>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="bk-treatment">Motivo da consulta</label>
+                  <select id="bk-treatment" name="treatment">
+                    <option>Avaliação inicial</option>
+                    <option>Clínica geral</option>
+                    <option>Facetas em resina composta</option>
+                    <option>Clareamento dental</option>
+                    <option>Tratamento de canal</option>
+                    <option>Restaurações</option>
+                    
+                  </select>
+                </div>
+
+                <button class="btn btn--primary btn--block" type="submit" data-submit>
+                  <i class="ph ph-calendar-plus" aria-hidden="true"></i>
+                  <span data-submit-label>Confirmar horário</span>
+                </button>
+              </form>
+
+              <!-- Etapa: confirmado -->
+              <div class="step" data-step="done" hidden tabindex="-1">
+                <div class="done">
+                  <span class="done__icon"><i class="ph ph-check" aria-hidden="true"></i></span>
+                  <p class="step__title">Horário reservado</p>
+                  <p class="step__hint" data-done-text>Enviamos a confirmação para o seu e-mail.</p>
+
+                  <div class="event">
+                    <p class="event__title">Avaliação com a Dra. Veronica Abreu · Dra. Veronica Abreu</p>
+                    <p><i class="ph-light ph-calendar-blank" aria-hidden="true"></i><span data-event-date></span></p>
+                    <p><i class="ph-light ph-map-pin" aria-hidden="true"></i>Avenida Dr. Durval Nicolau, 1145, sala 02</p>
+                  </div>
+
+                  <a class="btn btn--primary btn--block" href="#" target="_blank" rel="noopener" data-gcal-link>
+                    <i class="ph ph-google-logo" aria-hidden="true"></i>
+                    Salvar no Google Agenda
+                  </a>
+                  <button class="link-btn" type="button" data-restart>Fazer outro agendamento</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nota de apresentação (pitch). Remover quando a integração real estiver no ar. -->
+          <aside class="pitch-note" aria-label="Como funciona a integração com o Google Agenda">
+            <p class="pitch-note__title"><i class="ph-light ph-info" aria-hidden="true"></i>Prévia da integração com Google Agenda</p>
+            <ul role="list">
+              <li>
+                <i class="ph-light ph-arrows-clockwise" aria-hidden="true"></i>
+                <div><h3>Disponibilidade em tempo real</h3><p>O site lê a agenda da clínica e mostra apenas os horários livres.</p></div>
+              </li>
+              <li>
+                <i class="ph-light ph-calendar-plus" aria-hidden="true"></i>
+                <div><h3>Evento criado automaticamente</h3><p>A consulta entra na agenda da equipe e o horário fica bloqueado.</p></div>
+              </li>
+              <li>
+                <i class="ph-light ph-bell-ringing" aria-hidden="true"></i>
+                <div><h3>Convite e lembrete</h3><p>O paciente recebe o convite por e-mail, com lembrete antes da consulta.</p></div>
+              </li>
+            </ul>
+            <p class="pitch-note__foot">Neste protótipo, os horários são ilustrativos e nenhum dado é enviado.</p>
+          </aside>
+        </div>
+
+        <!-- ---------- Painel 2: Solicitação por e-mail ---------- -->
+        <div class="tab-panel" role="tabpanel" id="panel-email" aria-labelledby="tab-email" hidden data-panel>
+          <div class="mail">
+            <form class="mail__form form" data-email-form novalidate>
+              <div class="field-row">
+                <div class="field">
+                  <label for="em-name">Nome completo</label>
+                  <input id="em-name" name="name" type="text" autocomplete="name" required aria-describedby="em-name-err">
+                  <p class="field__error" id="em-name-err" data-error-for="em-name"></p>
+                </div>
+                <div class="field">
+                  <label for="em-email">E-mail</label>
+                  <input id="em-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="em-email-err">
+                  <p class="field__error" id="em-email-err" data-error-for="em-email"></p>
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="em-phone">WhatsApp <span class="field__opt">(opcional)</span></label>
+                  <input id="em-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(00) 00000-0000" aria-describedby="em-phone-err" data-phone>
+                  <p class="field__error" id="em-phone-err" data-error-for="em-phone"></p>
+                </div>
+                <div class="field">
+                  <label for="em-treatment">Motivo da consulta</label>
+                  <select id="em-treatment" name="treatment">
+                    <option>Avaliação inicial</option>
+                    <option>Clínica geral</option>
+                    <option>Facetas em resina composta</option>
+                    <option>Clareamento dental</option>
+                    <option>Tratamento de canal</option>
+                    <option>Restaurações</option>
+                    
+                  </select>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <fieldset class="field">
+                  <legend>Melhor período</legend>
+                  <div class="choice-group">
+                    <label class="choice"><input type="radio" name="period" value="Manhã" checked><span><i class="ph-light ph-sun" aria-hidden="true"></i>Manhã</span></label>
+                    <label class="choice"><input type="radio" name="period" value="Tarde"><span><i class="ph-light ph-sun-horizon" aria-hidden="true"></i>Tarde</span></label>
+                  </div>
+                </fieldset>
+                <div class="field">
+                  <label for="em-date">Data de preferência <span class="field__opt">(opcional)</span></label>
+                  <input id="em-date" name="date" type="date" aria-describedby="em-date-err">
+                  <p class="field__error" id="em-date-err" data-error-for="em-date"></p>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="em-msg">Mensagem <span class="field__opt">(opcional)</span></label>
+                <textarea id="em-msg" name="message" rows="3" aria-describedby="em-msg-help"></textarea>
+                <p class="field__help" id="em-msg-help">Conte o que você quer tratar ou tire uma dúvida.</p>
+              </div>
+
+              <div class="field">
+                <label class="check">
+                  <input type="checkbox" name="consent" id="em-consent" required aria-describedby="em-consent-err">
+                  <span>Autorizo a Dra. Veronica Abreu a usar meus dados para retornar o contato, conforme a LGPD.</span>
+                </label>
+                <p class="field__error" id="em-consent-err" data-error-for="em-consent"></p>
+              </div>
+
+              <button class="btn btn--primary" type="submit">
+                <i class="ph ph-paper-plane-tilt" aria-hidden="true"></i>
+                Enviar solicitação
+              </button>
+            </form>
+
+            <div class="mail__done" data-email-done hidden tabindex="-1">
+              <span class="done__icon"><i class="ph ph-envelope-simple-open" aria-hidden="true"></i></span>
+              <p class="step__title">Sua solicitação está pronta</p>
+              <p class="step__hint">Abrimos seu aplicativo de e-mail com a mensagem preenchida. É só enviar. A equipe retorna para confirmar data e horário.</p>
+              <p class="step__hint">Não abriu? Escreva para <a href="mailto:[PREENCHER: email de contato]" data-clinic-email>[PREENCHER: email de contato]</a>.</p>
+              <button class="link-btn" type="button" data-email-restart>Nova solicitação</button>
+            </div>
+
+            <aside class="mail__aside">
+              <p class="mail__aside-title">Como funciona</p>
+              <ol role="list">
+                <li><i class="ph-light ph-note-pencil" aria-hidden="true"></i>Você envia sua preferência de dia e período.</li>
+                <li><i class="ph-light ph-chats-circle" aria-hidden="true"></i>A equipe responde para confirmar o horário.</li>
+                <li><i class="ph-light ph-calendar-check" aria-hidden="true"></i>Sua consulta fica agendada.</li>
+              </ol>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <!-- ============ DÚVIDAS (acordeão) ============ -->
+    <section class="section faq" id="duvidas" aria-labelledby="faq-title">
+      <div class="container faq__grid">
+        <div class="faq__intro" data-reveal>
+          <p class="eyebrow">Dúvidas frequentes</p>
+          <h2 class="h2" id="faq-title">Antes de agendar</h2>
+          <p class="lead">Não encontrou sua pergunta? Chame no WhatsApp.</p>
+        </div>
+
+        <div class="faq__list" data-faq>
+          <div class="faq__item" data-reveal>
+            <h3><button type="button" aria-expanded="false" aria-controls="faq-1" id="faq-1-btn">Como faço para agendar?<i class="ph ph-plus" aria-hidden="true"></i></button></h3>
+            <div class="faq__panel" id="faq-1" role="region" aria-labelledby="faq-1-btn"><div><p>Pelo WhatsApp (19) 99668-4845. Todo atendimento é com hora marcada.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3><button type="button" aria-expanded="false" aria-controls="faq-2" id="faq-2-btn">Todo mundo precisa de faceta?<i class="ph ph-plus" aria-hidden="true"></i></button></h3>
+            <div class="faq__panel" id="faq-2" role="region" aria-labelledby="faq-2-btn"><div><p>Não. Cada caso é diferente; a indicação de facetas, clareamento ou outro tratamento é feita na avaliação.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3><button type="button" aria-expanded="false" aria-controls="faq-3" id="faq-3-btn">Clareamento causa sensibilidade?<i class="ph ph-plus" aria-hidden="true"></i></button></h3>
+            <div class="faq__panel" id="faq-3" role="region" aria-labelledby="faq-3-btn"><div><p>Pode haver sensibilidade em alguns casos. Na avaliação, a Dra. Veronica explica como o seu tratamento será acompanhado.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3><button type="button" aria-expanded="false" aria-controls="faq-4" id="faq-4-btn">De quanto em quanto tempo devo ir ao dentista?<i class="ph ph-plus" aria-hidden="true"></i></button></h3>
+            <div class="faq__panel" id="faq-4" role="region" aria-labelledby="faq-4-btn"><div><p>Retornos preventivos regulares ajudam a manter o sorriso saudável. O intervalo ideal para você é definido na consulta.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3><button type="button" aria-expanded="false" aria-controls="faq-5" id="faq-5-btn">Onde fica o consultório?<i class="ph ph-plus" aria-hidden="true"></i></button></h3>
+            <div class="faq__panel" id="faq-5" role="region" aria-labelledby="faq-5-btn"><div><p>Avenida Dr. Durval Nicolau, 1145, sala 02, São João da Boa Vista, SP.</p></div></div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA FINAL + CONTATO (bloco de cor) ============ -->
+    <section class="contact" id="contato" aria-labelledby="contact-title" data-contact>
+      <div class="container contact__grid">
+        <div class="contact__copy" data-reveal>
+          <svg class="logo contact__logo" aria-hidden="true" focusable="false" viewBox="0 0 32 32" width="44" height="44" fill="none">
+            <path d="M16 7.2c-2.1-1.6-4.6-2.1-6.6-1.3C6.3 7.1 5.4 10.1 5.9 13c.4 2.4 1.4 4.1 1.8 6.6.5 3 .8 6.9 2.7 8.2 1.8 1.2 2.6-2.4 3-4.6.4-2 .9-3.2 2.6-3.2s2.2 1.2 2.6 3.2c.4 2.2 1.2 5.8 3 4.6 1.9-1.3 2.2-5.2 2.7-8.2.4-2.5 1.4-4.2 1.8-6.6.5-2.9-.4-5.9-3.5-7.1-2-.8-4.5-.3-6.6 1.3z" stroke="#fcf7fb" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M21.5 9.5c.9.4 1.5 1.2 1.6 2.3" stroke="#ffddf7" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <h2 class="h2 h2--on-block" id="contact-title">Vamos cuidar do seu sorriso?</h2>
+          <p class="lead lead--on-block">Fale com a Dra. Veronica Abreu pelo WhatsApp e escolha o melhor horário para a sua avaliação.</p>
+          <a class="btn btn--light btn--lg" href="https://wa.me/5519996684845" data-wa>
+            <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
+            Agendar avaliação
+          </a>
+
+          <dl class="contact__info">
+            <div>
+              <dt><i class="ph-light ph-map-pin" aria-hidden="true"></i>Endereço</dt>
+              <dd>Avenida Dr. Durval Nicolau, 1145, sala 02<br>São João da Boa Vista, SP</dd>
+            </div>
+            <div>
+              <dt><i class="ph-light ph-phone" aria-hidden="true"></i>WhatsApp</dt>
+              <dd><a href="https://wa.me/5519996684845" data-wa>(19) 99668-4845</a></dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="contact__map" data-reveal>
+          <iframe
+            title="Mapa com a localização da Dra. Veronica Abreu"
+            src="https://maps.google.com/maps?q=Avenida%20Dr.%20Durval%20Nicolau%2C%201145%2C%20S%C3%A3o%20Jo%C3%A3o%20da%20Boa%20Vista%2C%20SP&z=16&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <div class="container footer__row">
+          <p>&copy; <span data-year>2026</span> Dra. Veronica Abreu. Todos os direitos reservados.</p>
+          <p>Responsável técnica: Dra. Veronica Abreu, [PREENCHER: registro profissional CRO-SP]</p>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <!-- CTA fixo no mobile: aparece depois do hero, some no contato -->
+  <div class="mobile-cta" data-mobile-cta aria-hidden="true">
+    <a class="btn btn--primary btn--block" href="https://wa.me/5519996684845" data-wa tabindex="-1">
+      <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
+      Agendar avaliação
+    </a>
+  </div>
+
+  <script>
+    (() => {
+      // Dados da clínica (gerados pelo render.py a partir do brand.json)
+      const CLINIC = {
+        name: "Dra. Veronica Abreu",
+        whatsapp: "5519996684845",
+        whatsappLabel: "(19) 99668-4845",
+        email: "[PREENCHER: email de contato]",
+        address: "Avenida Dr. Durval Nicolau, 1145, sala 02, S\u00e3o Jo\u00e3o da Boa Vista, SP",
+      };
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // ---------- Tema claro / escuro ----------
+      // O tema inicial já vem do <head>. Aqui: toggle, escolha salva e troca com fade.
+      const root = document.documentElement;
+      const themeToggle = document.querySelector('[data-theme-toggle]');
+      const themeColor = document.querySelector('meta[name="theme-color"]');
+      const savedTheme = () => {
+        try { return localStorage.getItem('theme'); } catch (e) { return null; }
+      };
+
+      const applyTheme = (theme) => {
+        root.dataset.theme = theme;
+        themeToggle?.setAttribute('aria-pressed', String(theme === 'dark'));
+        // Barra do navegador no mobile acompanha a cor do header
+        if (themeColor) themeColor.content = getComputedStyle(root).getPropertyValue('--block').trim();
+      };
+
+      // View Transition API: fade entre o tema antigo e o novo (sem animação se o
+      // navegador não suportar ou se a pessoa pediu menos movimento)
+      const switchTheme = (theme) => {
+        if (reduceMotion || !document.startViewTransition) { applyTheme(theme); return; }
+        root.classList.add('theme-switching');
+        const transition = document.startViewTransition(() => applyTheme(theme));
+        // As cores novas são calculadas com as transições de CSS desligadas (mudam
+        // de uma vez); logo depois elas voltam, sem esperar o fim do fade
+        transition.updateCallbackDone.finally(() => {
+          void document.body.offsetHeight;
+          root.classList.remove('theme-switching');
+        });
+      };
+
+      applyTheme(root.dataset.theme === 'dark' ? 'dark' : 'light');
+      themeToggle?.addEventListener('click', () => {
+        const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        try { localStorage.setItem('theme', next); } catch (e) { /* sem storage: vale só nesta visita */ }
+        switchTheme(next);
+      });
+      // Sem escolha salva, acompanha a troca de tema do sistema
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!savedTheme()) switchTheme(e.matches ? 'dark' : 'light');
+      });
+
+      // ---------- Links do WhatsApp com mensagem pronta ----------
+      document.querySelectorAll('[data-wa]').forEach((link) => {
+        const topic = link.dataset.waMsg;
+        const text = topic
+          ? "Ol\u00e1, Dra. Veronica! Gostaria de agendar uma avalia\u00e7\u00e3o sobre {topic}.".replace('{topic}', topic).replace('{name}', CLINIC.name)
+          : "Ol\u00e1, Dra. Veronica! Gostaria de agendar uma avalia\u00e7\u00e3o.".replace('{name}', CLINIC.name);
+        link.href = `https://wa.me/${CLINIC.whatsapp}?text=${encodeURIComponent(text)}`;
+        link.target = '_blank';
+        link.rel = 'noopener';
+      });
+
+      // ---------- Ano no rodapé ----------
+      const year = document.querySelector('[data-year]');
+      if (year) year.textContent = new Date().getFullYear();
+
+      // ---------- Sombra do header ao sair do topo ----------
+      const header = document.querySelector('[data-header]');
+      const hero = document.querySelector('[data-hero]');
+      const contact = document.querySelector('[data-contact]');
+      const mobileCta = document.querySelector('[data-mobile-cta]');
+      const mobileCtaLink = mobileCta?.querySelector('a');
+
+      let heroVisible = true;
+      let contactVisible = false;
+      const syncMobileCta = () => {
+        const show = !heroVisible && !contactVisible;
+        mobileCta?.classList.toggle('is-visible', show);
+        mobileCta?.setAttribute('aria-hidden', String(!show));
+        if (mobileCtaLink) mobileCtaLink.tabIndex = show ? 0 : -1;
+      };
+
+      // Sentinela de 1px no topo do documento: quando sai da tela, a página rolou
+      const sentinel = document.createElement('div');
+      sentinel.setAttribute('aria-hidden', 'true');
+      sentinel.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:1px;pointer-events:none;';
+      document.body.prepend(sentinel);
+      new IntersectionObserver(([entry]) => {
+        header?.classList.toggle('is-scrolled', !entry.isIntersecting);
+      }).observe(sentinel);
+
+      if (hero) {
+        new IntersectionObserver(([entry]) => {
+          heroVisible = entry.isIntersecting;
+          syncMobileCta();
+        }).observe(hero);
+      }
+      // No contato e na seção de agendamento o botão fixo sairia duplicado ou cobriria o formulário
+      const hideCtaOver = new Set();
+      const ctaObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) hideCtaOver.add(entry.target);
+          else hideCtaOver.delete(entry.target);
+        });
+        contactVisible = hideCtaOver.size > 0;
+        syncMobileCta();
+      });
+      [contact, document.getElementById('agendar')].forEach((el) => el && ctaObserver.observe(el));
+
+      // ---------- Menu mobile ----------
+      const toggle = document.querySelector('[data-nav-toggle]');
+      const menu = document.querySelector('[data-mobile-menu]');
+      const main = document.querySelector('main');
+      const isMenuOpen = () => menu?.classList.contains('is-open');
+      const setMenu = (open) => {
+        if (!toggle || !menu) return;
+        menu.classList.toggle('is-open', open);
+        document.documentElement.classList.toggle('menu-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.querySelector('.sr-only').textContent = open ? 'Fechar menu' : 'Abrir menu';
+        // Conteúdo atrás do menu fica fora do alcance do teclado e leitores de tela
+        if (main) main.inert = open;
+        if (mobileCta) mobileCta.inert = open;
+      };
+      toggle?.addEventListener('click', () => setMenu(!isMenuOpen()));
+      menu?.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isMenuOpen()) { setMenu(false); toggle.focus(); }
+      });
+      // Se a tela crescer para desktop com o menu aberto, fecha sem deixar a página travada
+      window.matchMedia('(min-width: 1024px)').addEventListener('change', (e) => {
+        if (e.matches) setMenu(false);
+      });
+
+      // ---------- Reveal no scroll ----------
+      const revealEls = document.querySelectorAll('[data-reveal]');
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        revealEls.forEach((el) => el.classList.add('is-in'));
+      } else {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          });
+        }, { rootMargin: '0px 0px -40px 0px', threshold: 0.1 });
+        revealEls.forEach((el) => io.observe(el));
+      }
+
+      // ---------- FAQ (acordeão) ----------
+      document.querySelectorAll('[data-faq] .faq__item').forEach((item) => {
+        const btn = item.querySelector('button');
+        btn.addEventListener('click', () => {
+          const open = btn.getAttribute('aria-expanded') !== 'true';
+          btn.setAttribute('aria-expanded', String(open));
+          item.classList.toggle('is-open', open);
+        });
+      });
+
+      // ---------- Galeria: botões anterior / próximo ----------
+      const gallery = document.querySelector('[data-gallery]');
+      const prev = document.querySelector('[data-gallery-prev]');
+      const next = document.querySelector('[data-gallery-next]');
+      if (gallery && prev && next) {
+        const step = () => {
+          const item = gallery.querySelector('.gallery__item');
+          return item ? item.getBoundingClientRect().width + 16 : 320;
+        };
+        const behavior = reduceMotion ? 'auto' : 'smooth';
+        prev.addEventListener('click', () => gallery.scrollBy({ left: -step(), behavior }));
+        next.addEventListener('click', () => gallery.scrollBy({ left: step(), behavior }));
+
+        const syncButtons = () => {
+          const max = gallery.scrollWidth - gallery.clientWidth - 2;
+          prev.disabled = gallery.scrollLeft <= 2;
+          next.disabled = gallery.scrollLeft >= max;
+        };
+        gallery.addEventListener('scroll', syncButtons, { passive: true });
+        window.addEventListener('resize', syncButtons);
+        syncButtons();
+      }
+
+      // =====================================================================
+      // AGENDAMENTO
+      // =====================================================================
+
+      const CLINIC_EMAIL = CLINIC.email;
+      const CLINIC_ADDRESS = CLINIC.address;
+
+      const MONTHS = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+      const WEEKDAYS = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'];
+      const pad = (n) => String(n).padStart(2, '0');
+      const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+      const dateKey = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+      const longDate = (d) => `${cap(WEEKDAYS[d.getDay()])}, ${d.getDate()} de ${MONTHS[d.getMonth()]}`;
+      const startOfDay = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+      const today = startOfDay(new Date());
+
+      // ---------- Validação compartilhada pelos dois formulários ----------
+      const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      const digits = (v) => v.replace(/\D/g, '');
+
+      const setError = (form, input, message) => {
+        const slot = form.querySelector(`[data-error-for="${input.id}"]`);
+        if (slot) slot.textContent = message || '';
+        if (message) input.setAttribute('aria-invalid', 'true');
+        else input.removeAttribute('aria-invalid');
+      };
+
+      const checkField = (input) => {
+        const value = input.type === 'checkbox' ? input.checked : input.value.trim();
+        switch (input.name) {
+          case 'name':
+            if (!value) return 'Informe seu nome.';
+            if (value.length < 3) return 'Informe o nome completo.';
+            return '';
+          case 'email':
+            if (!value) return 'Informe seu e-mail.';
+            if (!EMAIL_RE.test(value)) return 'Confira o e-mail. Exemplo: nome@email.com';
+            return '';
+          case 'phone':
+            if (!value) return input.required ? 'Informe seu WhatsApp com DDD.' : '';
+            if (digits(value).length < 10) return 'Informe o número com DDD.';
+            return '';
+          case 'date':
+            if (value && new Date(`${value}T00:00`) < today) return 'Escolha uma data a partir de hoje.';
+            return '';
+          case 'consent':
+            return value ? '' : 'É preciso autorizar o contato para enviar.';
+          default:
+            return '';
+        }
+      };
+
+      // Valida tudo; retorna o primeiro campo inválido (ou null)
+      const validateForm = (form) => {
+        let firstInvalid = null;
+        form.querySelectorAll('input[name], textarea[name]').forEach((input) => {
+          if (input.type === 'radio') return;
+          const message = checkField(input);
+          setError(form, input, message);
+          if (message && !firstInvalid) firstInvalid = input;
+        });
+        return firstInvalid;
+      };
+
+      // Depois da primeira tentativa, os erros se atualizam enquanto a pessoa corrige
+      const liveValidate = (form) => {
+        form.addEventListener('input', (e) => {
+          const input = e.target;
+          if (!form.dataset.touched || !input.name || input.type === 'radio') return;
+          setError(form, input, checkField(input));
+        });
+        form.addEventListener('change', (e) => {
+          const input = e.target;
+          if (!form.dataset.touched || !input.name || input.type === 'radio') return;
+          setError(form, input, checkField(input));
+        });
+      };
+
+      // Máscara de telefone: (00) 00000-0000
+      document.querySelectorAll('[data-phone]').forEach((input) => {
+        input.addEventListener('input', () => {
+          const d = digits(input.value).slice(0, 11);
+          let out = d;
+          if (d.length > 2) out = `(${d.slice(0, 2)}) ${d.slice(2)}`;
+          if (d.length > 6) out = `(${d.slice(0, 2)}) ${d.slice(2, d.length - 4)}-${d.slice(-4)}`;
+          input.value = out;
+        });
+      });
+
+      // ---------- Abas (Agenda online / Por e-mail) ----------
+      const tabList = document.querySelector('[data-tabs]');
+      if (tabList) {
+        const tabs = [...tabList.querySelectorAll('[role="tab"]')];
+        const selectTab = (tab, focus) => {
+          tabs.forEach((t) => {
+            const selected = t === tab;
+            t.setAttribute('aria-selected', String(selected));
+            t.tabIndex = selected ? 0 : -1;
+            document.getElementById(t.getAttribute('aria-controls')).hidden = !selected;
+          });
+          if (focus) tab.focus();
+        };
+        tabs.forEach((tab, i) => {
+          tab.addEventListener('click', () => selectTab(tab));
+          tab.addEventListener('keydown', (e) => {
+            if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+            e.preventDefault();
+            const next = (i + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+            selectTab(tabs[next], true);
+          });
+        });
+      }
+
+      // ---------- Agenda online (PRÉVIA: sem backend, horários simulados) ----------
+      // Na versão final, `slotsFor` consulta a API do Google Agenda (freebusy) e
+      // a confirmação cria o evento na agenda da clínica.
+      const scheduler = document.querySelector('[data-scheduler]');
+      if (scheduler) {
+        const grid = scheduler.querySelector('[data-cal-grid]');
+        const monthLabel = scheduler.querySelector('[data-cal-month]');
+        const prevMonth = scheduler.querySelector('[data-cal-prev]');
+        const nextMonth = scheduler.querySelector('[data-cal-next]');
+        const slotsWrap = scheduler.querySelector('[data-slots]');
+        const slotsTitle = scheduler.querySelector('[data-slots-title]');
+        const steps = [...scheduler.querySelectorAll('[data-step]')];
+        const stepLabels = [...scheduler.querySelectorAll('[data-step-label]')];
+        const form = scheduler.querySelector('[data-booking-form]');
+        const summary = scheduler.querySelector('[data-summary]');
+        const submitBtn = form.querySelector('[data-submit]');
+        const submitLabel = form.querySelector('[data-submit-label]');
+        const submitIcon = submitBtn.querySelector('i');
+        const doneStep = scheduler.querySelector('[data-step="done"]');
+        const doneText = scheduler.querySelector('[data-done-text]');
+        const eventDate = scheduler.querySelector('[data-event-date]');
+        const gcalLink = scheduler.querySelector('[data-gcal-link]');
+
+        // Horário ilustrativo: seg a sex 8h-12h e 14h-18h, sábado 8h-12h
+        const WEEKDAY_HOURS = [8, 9, 10, 11, 14, 15, 16, 17];
+        const SATURDAY_HOURS = [];
+        const booked = new Set();
+
+        // Hash determinístico: o mesmo dia sempre mostra a mesma ocupação
+        const hash = (str) => {
+          let h = 2166136261;
+          for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+          return Math.abs(h);
+        };
+
+        const slotsFor = (date) => {
+          if (date <= today || date.getDay() === 0) return [];
+          const hours = date.getDay() === 6 ? SATURDAY_HOURS : WEEKDAY_HOURS;
+          const key = dateKey(date);
+          return hours.map((h) => ({ h, busy: booked.has(`${key}T${h}`) || hash(`${key}-${h}`) % 100 < 40 }));
+        };
+
+        const minMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+        const maxMonth = new Date(today.getFullYear(), today.getMonth() + 2, 1);
+        // Abre no mês do primeiro dia com horário livre (ex.: no último dia do mês, já mostra o próximo)
+        const firstFreeDay = () => {
+          for (let d = new Date(today); d < new Date(maxMonth.getFullYear(), maxMonth.getMonth() + 1, 1); d.setDate(d.getDate() + 1)) {
+            if (slotsFor(d).some((s) => !s.busy)) return new Date(d);
+          }
+          return today;
+        };
+        const firstFree = firstFreeDay();
+        let viewMonth = new Date(firstFree.getFullYear(), firstFree.getMonth(), 1);
+        let selectedDate = null;
+        let selectedHour = null;
+
+        const side = scheduler.querySelector('.scheduler__side');
+        const stacked = window.matchMedia('(max-width: 1023px)');
+        const showStep = (name) => {
+          steps.forEach((s) => { s.hidden = s.dataset.step !== name; });
+          // No mobile o painel fica abaixo do calendário: leva a pessoa até a próxima etapa
+          if (stacked.matches && name !== 'empty') {
+            side.scrollIntoView({ block: 'start', behavior: reduceMotion ? 'auto' : 'smooth' });
+          }
+          const order = { empty: 0, slots: 1, form: 2, done: 3 }[name];
+          stepLabels.forEach((label, i) => {
+            label.classList.toggle('is-active', i === order);
+            label.classList.toggle('is-done', i < order);
+          });
+        };
+
+        const renderCalendar = () => {
+          const y = viewMonth.getFullYear();
+          const m = viewMonth.getMonth();
+          monthLabel.textContent = `${MONTHS[m]} ${y}`;
+          prevMonth.disabled = viewMonth <= minMonth;
+          nextMonth.disabled = viewMonth >= maxMonth;
+
+          const frag = document.createDocumentFragment();
+          const lead = new Date(y, m, 1).getDay();
+          for (let i = 0; i < lead; i++) frag.appendChild(document.createElement('span'));
+
+          const days = new Date(y, m + 1, 0).getDate();
+          for (let d = 1; d <= days; d++) {
+            const date = new Date(y, m, d);
+            const free = slotsFor(date).filter((s) => !s.busy).length;
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'cal__day';
+            btn.textContent = d;
+            btn.disabled = free === 0;
+            btn.classList.toggle('is-available', free > 0);
+            btn.classList.toggle('is-today', date.getTime() === today.getTime());
+            btn.setAttribute('aria-pressed', String(!!selectedDate && date.getTime() === selectedDate.getTime()));
+            btn.setAttribute('aria-label', `${longDate(date)}, ${free ? `${free} horários livres` : 'sem horários'}`);
+            btn.addEventListener('click', () => selectDay(date));
+            frag.appendChild(btn);
+          }
+          grid.replaceChildren(frag);
+        };
+
+        const renderSlots = () => {
+          slotsTitle.textContent = longDate(selectedDate);
+          const frag = document.createDocumentFragment();
+          slotsFor(selectedDate).forEach(({ h, busy }) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'slot';
+            btn.textContent = `${pad(h)}:00`;
+            btn.disabled = busy;
+            btn.setAttribute('aria-pressed', String(h === selectedHour));
+            if (busy) btn.setAttribute('aria-label', `${pad(h)}:00, ocupado`);
+            btn.addEventListener('click', () => selectSlot(h));
+            frag.appendChild(btn);
+          });
+          slotsWrap.replaceChildren(frag);
+        };
+
+        const selectDay = (date) => {
+          selectedDate = date;
+          selectedHour = null;
+          renderCalendar();
+          renderSlots();
+          showStep('slots');
+        };
+
+        const selectSlot = (h) => {
+          selectedHour = h;
+          renderSlots();
+          summary.textContent = `${longDate(selectedDate)} às ${pad(h)}:00`;
+          showStep('form');
+          form.querySelector('input').focus({ preventScroll: true });
+        };
+
+        const googleCalendarUrl = () => {
+          const d = selectedDate;
+          const day = `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
+          const params = new URLSearchParams({
+            action: 'TEMPLATE',
+            text: `${ "Avalia\u00e7\u00e3o com a Dra. Veronica Abreu" } · ${CLINIC.name}`,
+            dates: `${day}T${pad(selectedHour)}0000/${day}T${pad(selectedHour + 1)}0000`,
+            ctz: 'America/Sao_Paulo',
+            details: `${ "Consulta de avalia\u00e7\u00e3o odontol\u00f3gica." } Dúvidas: WhatsApp ${CLINIC.whatsappLabel}.`,
+            location: CLINIC_ADDRESS,
+          });
+          return `https://calendar.google.com/calendar/render?${params}`;
+        };
+
+        prevMonth.addEventListener('click', () => {
+          viewMonth = new Date(viewMonth.getFullYear(), viewMonth.getMonth() - 1, 1);
+          renderCalendar();
+        });
+        nextMonth.addEventListener('click', () => {
+          viewMonth = new Date(viewMonth.getFullYear(), viewMonth.getMonth() + 1, 1);
+          renderCalendar();
+        });
+        scheduler.querySelector('[data-change-slot]').addEventListener('click', () => showStep('slots'));
+
+        liveValidate(form);
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          form.dataset.touched = 'true';
+          const invalid = validateForm(form);
+          if (invalid) { invalid.focus(); return; }
+
+          // Simula a chamada ao servidor que criaria o evento no Google Agenda
+          submitBtn.setAttribute('aria-busy', 'true');
+          submitBtn.disabled = true;
+          submitLabel.textContent = 'Confirmando...';
+          submitIcon.className = 'ph ph-circle-notch';
+
+          setTimeout(() => {
+            booked.add(`${dateKey(selectedDate)}T${selectedHour}`);
+            const email = form.elements.email.value.trim();
+            doneText.textContent = `O convite da consulta vai para ${email}.`;
+            eventDate.textContent = `${longDate(selectedDate)}, ${pad(selectedHour)}:00 às ${pad(selectedHour + 1)}:00`;
+            gcalLink.href = googleCalendarUrl();
+
+            submitBtn.removeAttribute('aria-busy');
+            submitBtn.disabled = false;
+            submitLabel.textContent = 'Confirmar horário';
+            submitIcon.className = 'ph ph-calendar-plus';
+
+            renderCalendar();
+            showStep('done');
+            doneStep.focus({ preventScroll: true });
+          }, 1100);
+        });
+
+        scheduler.querySelector('[data-restart]').addEventListener('click', () => {
+          form.reset();
+          delete form.dataset.touched;
+          form.querySelectorAll('[aria-invalid]').forEach((el) => setError(form, el, ''));
+          selectedDate = null;
+          selectedHour = null;
+          renderCalendar();
+          showStep('empty');
+        });
+
+        renderCalendar();
+      }
+
+      // ---------- Solicitação por e-mail (mailto: com a mensagem pronta) ----------
+      const emailForm = document.querySelector('[data-email-form]');
+      const emailDone = document.querySelector('[data-email-done]');
+      if (emailForm && emailDone) {
+        const dateInput = emailForm.querySelector('#em-date');
+        if (dateInput) dateInput.min = dateKey(today);
+        document.querySelectorAll('[data-clinic-email]').forEach((a) => {
+          a.href = `mailto:${CLINIC_EMAIL}`;
+          a.textContent = CLINIC_EMAIL;
+        });
+
+        liveValidate(emailForm);
+        emailForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          emailForm.dataset.touched = 'true';
+          const invalid = validateForm(emailForm);
+          if (invalid) { invalid.focus(); return; }
+
+          const f = emailForm.elements;
+          const date = f.date.value ? f.date.value.split('-').reverse().join('/') : '';
+          const lines = [
+            `Olá, equipe ${CLINIC.name}!`,
+            '',
+            'Gostaria de agendar uma consulta.',
+            '',
+            `Nome: ${f.name.value.trim()}`,
+            `E-mail: ${f.email.value.trim()}`,
+            f.phone.value ? `WhatsApp: ${f.phone.value}` : null,
+            `Motivo: ${f.treatment.value}`,
+            `Período preferido: ${f.period.value}`,
+            date ? `Data de preferência: ${date}` : null,
+            f.message.value.trim() ? `\nMensagem:\n${f.message.value.trim()}` : null,
+          ].filter((l) => l !== null);
+
+          const subject = `Agendamento pelo site: ${f.treatment.value}`;
+          window.location.href = `mailto:${CLINIC_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+
+          emailForm.hidden = true;
+          emailDone.hidden = false;
+          emailDone.focus({ preventScroll: true });
+        });
+
+        emailDone.querySelector('[data-email-restart]').addEventListener('click', () => {
+          emailForm.reset();
+          delete emailForm.dataset.touched;
+          emailForm.querySelectorAll('[aria-invalid]').forEach((el) => setError(emailForm, el, ''));
+          emailDone.hidden = true;
+          emailForm.hidden = false;
+          emailForm.querySelector('input').focus();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
